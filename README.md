@@ -1,26 +1,37 @@
-# Turbo GitHub Hub
+# GitHub Hub
 
-Een simpele Windows desktopapp om lokale GitHub-projecten te herkennen, status te controleren, veilig te pullen en te openen.
+Een minimalistische Windows desktopapp waarmee je via GitHub inlogt en al je online repositories als kaarten bekijkt.
 
 ## Functies
 
-- Detecteert lokale Git-repositories in een gekozen hoofdmap
-- Voert `git fetch` uit en vergelijkt lokaal met `origin`
-- Statussen: up-to-date, update beschikbaar, lokale commits, conflict/diverged en lokale wijzigingen
-- Veilige pull alleen wanneer de werkmap schoon is
-- Openen in Visual Studio Code, Verkenner en GitHub
-- Toont projectmetadata uit `turbo-project.json`
-- Toont een preview uit `docs/previews/`
-- Schrijft begrijpelijke logs naar `logs/github-hub.log`
+• Login via GitHub CLI en browser
+• Publieke en private repositories tonen
+• Lokale repository vergelijken met de laatste GitHub commit
+• Status: up-to-date, update beschikbaar, lokale wijzigingen of branches verschillen
+• Veilig pullen met `git pull --ff-only`
+• Downloaden wanneer een repository nog niet lokaal staat
+• Openen in Visual Studio Code
+• Openen op GitHub
+• Zoeken op naam of omschrijving
 
 ## Starten op Windows
 
-Dubbelklik op `Start Project.bat`.
+Dubbelklik op:
 
-De eerste keer kies je de map waarin je lokale repositories staan, bijvoorbeeld:
+`Start Project.bat`
 
-`C:\Users\Hesse\Projects`
+De launcher controleert automatisch of Python, Git en GitHub CLI aanwezig zijn.
+
+Bij de eerste GitHub-login opent je browser. De app bewaart zelf geen wachtwoord of GitHub-token.
+
+## Lokale projectmap
+
+Klik op **Projectmap** en kies bijvoorbeeld:
+
+`C:\Users\Hesse\GitHub`
+
+Repositories die daar al bestaan worden automatisch gecontroleerd. Ontbrekende repositories kun je vanuit de kaart downloaden.
 
 ## Veiligheid
 
-De hub voert nooit automatisch een destructieve Git-actie uit. Pull wordt geblokkeerd bij lokale wijzigingen, een ontbrekende upstream of uiteenlopende branches.
+Pull wordt alleen aangeboden wanneer de lokale map schoon is, niet vooruitloopt en uitsluitend achterloopt op GitHub. Lokale wijzigingen worden nooit overschreven.
