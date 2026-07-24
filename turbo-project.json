@@ -1,0 +1,12 @@
+{
+  "name": "Turbo GitHub Hub",
+  "slug": "turbo-github-hub",
+  "version": "0.1.0",
+  "description": "Windows desktop hub voor lokale GitHub repositories, veilige pulls en projectpreviews.",
+  "preview": "docs/previews/latest.png",
+  "start_command": "Start Project.bat",
+  "default_port": 0,
+  "health_url": "",
+  "type": "desktop-python",
+  "entrypoint": "app.py"
+}
