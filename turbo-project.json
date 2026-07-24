@@ -1,8 +1,8 @@
 {
-  "name": "Turbo GitHub Hub",
-  "slug": "turbo-github-hub",
-  "version": "0.1.0",
-  "description": "Windows desktop hub voor lokale GitHub repositories, veilige pulls en projectpreviews.",
+  "name": "GitHub Hub",
+  "slug": "github-hub",
+  "version": "0.2.0",
+  "description": "Minimalistische Windows hub met GitHub-login, online repositories, veilige pulls en openen in VS Code.",
   "preview": "docs/previews/latest.svg",
   "start_command": "Start Project.bat",
   "default_port": 0,
