@@ -35,3 +35,16 @@ Repositories die daar al bestaan worden automatisch gecontroleerd. Ontbrekende r
 ## Veiligheid
 
 Pull wordt alleen aangeboden wanneer de lokale map schoon is, niet vooruitloopt en uitsluitend achterloopt op GitHub. Lokale wijzigingen worden nooit overschreven.
+
+
+## Hessel Build System
+
+Deze repository is ook het centrale projectregister en de handleiding voor de volledige GitHub-structuur.
+
+| Document | Inhoud |
+|---|---|
+| [AGENTS.md](AGENTS.md) | Vaste regels voor agents en developers |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Doelarchitectuur en verantwoordelijkheden |
+| [Repository-inventarisatie](docs/REPOSITORY_INVENTORY.md) | Actuele indeling, overlap en opruimkandidaten |
+| [Projectstandaard](docs/PROJECT_STANDARD.md) | Minimale structuur en metadata |
+| [Website-architectuur](docs/WEBSITE_ARCHITECTURE.md) | Content, componenten en één Hostnet-deploypad |
