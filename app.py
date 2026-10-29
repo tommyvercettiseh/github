@@ -76,6 +76,22 @@ def gh_available() -> bool:
         return False
 
 
+def normalize_github_url(url: str) -> str:
+    url = url.strip().rstrip("/")
+    if url.startswith("git@github.com:"):
+        url = "https://github.com/" + url.removeprefix("git@github.com:")
+    return url.removesuffix(".git")
+
+
+def discover_repositories(root: Path) -> list[Path]:
+    if not root.is_dir():
+        return []
+    return sorted(
+        (path for path in root.iterdir() if path.is_dir() and (path / ".git").exists()),
+        key=lambda path: path.name.casefold(),
+    )
+
+
 def gh_logged_in() -> bool:
     if not gh_available():
         return False
@@ -83,6 +99,7 @@ def gh_logged_in() -> bool:
 
 
 def inspect_local(repo: Repo) -> Repo:
+    repo.can_pull = False
     path = repo.local_path
     if not path:
         return repo
@@ -103,11 +120,14 @@ def inspect_local(repo: Repo) -> Repo:
             return repo
 
         counts = run(["git", "rev-list", "--left-right", "--count", "HEAD...@{u}"], cwd=path)
-        ahead, behind = (0, 0)
-        if counts.returncode == 0:
-            parts = counts.stdout.strip().split()
-            if len(parts) == 2:
-                ahead, behind = map(int, parts)
+        if counts.returncode != 0:
+            repo.status = "Controle mislukt"
+            repo.detail = counts.stderr.strip() or "Git-status kon niet worden bepaald"
+            return repo
+        parts = counts.stdout.strip().split()
+        if len(parts) != 2:
+            raise ValueError("Ongeldig antwoord van Git")
+        ahead, behind = map(int, parts)
 
         if repo.dirty:
             repo.status = "Lokale wijzigingen"
